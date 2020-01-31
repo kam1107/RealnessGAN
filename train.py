@@ -47,7 +47,7 @@ if param.load_ckpt is None and os.path.exists(base_dir):
     raise ValueError
 
 if param.load_ckpt is None:
-    os.system('makedir -p %s' % base_dir)
+    os.system('mkdir -p %s' % base_dir)
     os.mkdir(f"{base_dir}/images")
     if param.gen_extra_images > 0 and not os.path.exists(f"{param.extra_folder}"):
         os.mkdir(f"{param.extra_folder}")
