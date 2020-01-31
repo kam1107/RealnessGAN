@@ -22,7 +22,7 @@ def print_now(cmd, file=None):
 
 def learnG_Realness(param, D, G, optimizerG, random_sample, Triplet_Loss, x, anchor1):
     device = 'cuda' if param.cuda else 'cpu'
-    z = torch.FloatTenshor(param.batch_size, param.z_size, 1, 1)
+    z = torch.FloatTensor(param.batch_size, param.z_size, 1, 1)
     z = z.to(device)
 
     G.train()

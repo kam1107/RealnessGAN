@@ -200,7 +200,7 @@ for i in range(iter_offset, param.total_iters):
     if i < 1000 or (i+1) % 100 == 0:
         end = time.time()
         fmt = '[%d / %d] SD: %d Diff: %.4f loss_D: %.4f loss_G: %.4f time:%.2f'
-        s = fmt % (i+1, param.n_iter, param.seed,
+        s = fmt % (i+1, param.total_iters, param.seed,
                     -lossD.data.item() + lossG.data.item() if (lossD is not None) and (lossG is not None) else -1.0,
                     lossD.data.item()                      if lossD is not None else -1.0,
                     lossG.data.item()                      if lossG is not None else -1.0,

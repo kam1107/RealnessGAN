@@ -22,6 +22,7 @@ def print_now(cmd, file=None):
 def learnD_Realness(param, D, G, optimizerD, random_sample, Triplet_Loss, x, anchor1, anchor0):
     device = 'cuda' if param.cuda else 'cpu'
     z = torch.FloatTensor(param.batch_size, param.z_size, 1, 1)
+    z = z.to(device)
 
     for p in D.parameters():
         p.requires_grad = True
@@ -38,7 +39,7 @@ def learnD_Realness(param, D, G, optimizerD, random_sample, Triplet_Loss, x, anc
             del images
 
             anchor_real = torch.zeros((x.shape[0], num_outcomes), dtype=torch.float).to(device) + torch.tensor(anchor1, dtype=torch.float).to(device)
-            anchor_fake = torch.zeros((x.shape[0], num_outcomes), dtype=torch.float).to(device) + torch.tensor(anchor0, dtype=torch.flaot).to(device)
+            anchor_fake = torch.zeros((x.shape[0], num_outcomes), dtype=torch.float).to(device) + torch.tensor(anchor0, dtype=torch.float).to(device)
 
             # real images
             feat_real = D(x).log_softmax(1).exp()

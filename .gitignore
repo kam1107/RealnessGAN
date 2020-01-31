@@ -1,0 +1,4 @@
+OUTPUT/*
+LOG/*
+__pycache__
+training/__pycache__
