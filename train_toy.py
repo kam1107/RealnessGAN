@@ -50,7 +50,7 @@ if param.cuda:
     device = 'cuda'
 
 random.seed(param.seed)
-numpy.random.seed(param.seed)
+np.random.seed(param.seed)
 torch.manual_seed(param.seed)
 if param.cuda:
     torch.cuda.manual_seed_all(param.seed)
@@ -86,7 +86,7 @@ class DataProvider:
 
 random_sample = DataProvider(data, param.batch_size)
 
-from GAN_model import GAN_G, GAN_D
+from model.GAN_model import GAN_G, GAN_D
 G = GAN_G(param)
 D = GAN_D(param)
 print_now('Using feature size of {}'.format(param.num_outcomes))
@@ -199,10 +199,10 @@ for i in range(iter_offset, param.total_iters):
             fake_test_list = []
             for ext in range(int(param.gen_extra_images/extra_batch)):
                 fake_test = G(z_extra.normal_(0, 1)).squeeze()
-				fake_test = fake_test.cpu().clone().numpy()
-				fake_test_list.extend(fake_test)
-            with open('%s/%01d_extra.pk' % (param.extra_folder, current_set_images), 'wb') as f:
-				pickle.dump(fake_test_list, f, protocol=pickle.HIGHEST_PROTOCOL)
+                fake_test = fake_test.cpu().clone().numpy()
+                fake_test_list.extend(fake_test)
+            with open('%s/%01d/extra.pk' % (param.extra_folder, current_set_images), 'wb') as f:
+                pickle.dump(fake_test_list, f, protocol=pickle.HIGHEST_PROTOCOL)
                 
             del z_extra
             del fake_test
