@@ -2,4 +2,4 @@ OUTPUT/*
 LOG/*
 __pycache__
 training/__pycache__
-.DS_store
+.DS_Store
