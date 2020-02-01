@@ -119,7 +119,7 @@ print_now("Initialized weights")
 G.apply(weights_init)
 D.apply(weights_init)
 
-print_now('Using image size {} with color dim = {}'.format(param.image_size, param.n_channels))
+print_now('Using image size {} with output channel = {}'.format(param.image_size, param.n_channels))
 print_now('Using {} GPUs, batch_size = {}, effective_batch_size = {}'.format(param.n_gpu, param.batch_size, param.effective_batch_size))
 
 # used for inspecting training process
