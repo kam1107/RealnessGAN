@@ -152,7 +152,7 @@ for i in range(iter_offset, param.total_iters):
     G.train()
 
     lossD = learnD_Realness(param, D, G, optimizerD, random_sample, Triplet_Loss, x, anchor1, anchor0)
-    lossG = learnG_Realness(param, D, G, optimizerG, random_sample, Triplet_Loss, x, anchor1)
+    lossG = learnG_Realness(param, D, G, optimizerG, random_sample, Triplet_Loss, x, anchor1, anchor0)
 
     decayD.step()
     decayG.step()

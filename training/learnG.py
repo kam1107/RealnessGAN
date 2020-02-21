@@ -20,7 +20,7 @@ def print_now(cmd, file=None):
         print(print_str, file=file)
     sys.stdout.flush()
 
-def learnG_Realness(param, D, G, optimizerG, random_sample, Triplet_Loss, x, anchor1):
+def learnG_Realness(param, D, G, optimizerG, random_sample, Triplet_Loss, x, anchor1, anchor0):
     device = 'cuda' if param.cuda else 'cpu'
     z = torch.FloatTensor(param.batch_size, param.z_size, 1, 1)
     z = z.to(device)
@@ -41,6 +41,7 @@ def learnG_Realness(param, D, G, optimizerG, random_sample, Triplet_Loss, x, anc
 
             num_outcomes = Triplet_Loss.atoms
             anchor_real = torch.zeros((x.shape[0], num_outcomes), dtype=torch.float).to(device) + torch.tensor(anchor1, dtype=torch.float).to(device)
+            anchor_fake = torch.zeros((x.shape[0], num_outcomes), dtype=torch.float).to(device) + torch.tensor(anchor0, dtype=torch.float).to(device)
 
             # real images
             feat_real = D(x).log_softmax(1).exp()
@@ -52,9 +53,9 @@ def learnG_Realness(param, D, G, optimizerG, random_sample, Triplet_Loss, x, anc
 
             # compute loss
             if param.relativisticG:
-                lossG = Triplet_Loss(feat_real, feat_fake)
+                lossG = -Triplet_Loss(anchor_fake, feat_fake, skewness=param.negative_skew) + Triplet_Loss(feat_real, feat_fake)
             else:
-                lossG = Triplet_Loss(anchor_real, feat_fake, skewness=param.positive_skew)
+                lossG = -Triplet_Loss(anchor_fake, feat_fake, skewness=param.negative_skew) + Triplet_Loss(anchor_real, feat_fake, skewness=param.positive_skew)
             lossG.backward()
 
         optimizerG.step()
