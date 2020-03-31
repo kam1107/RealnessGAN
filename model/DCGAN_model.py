@@ -79,7 +79,7 @@ class DCGAN_D(nn.Module):
         out_size = self.param.num_outcomes 
         self.fc = spectral_norm(nn.Linear(in_size, out_size, bias=False))
 
-        # re-parameterization trick
+        # resampling trick
         self.reparam = spectral_norm(nn.Linear(in_size, out_size * 2, bias=False))
 
     def forward(self, input):
