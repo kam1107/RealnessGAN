@@ -28,6 +28,7 @@ Experiments were conducted on two real-world datasets: [CelebA](http://mmlab.ie.
 **FFHQ 1024x1024 (FID = 17.18)**
 
 ![](/images/FFHQ_snapshot.png)
+[Pretrained Model on FFHQ](https://drive.google.com/file/d/1NapKYf90NMQwk0TNTuMIb22RN3OeC0PU/view?usp=sharing)
 
 
 
