@@ -8,7 +8,7 @@ This repository contains the code of the following paper:
 
 ## Demo
 
-* Watch the full demo video in [YouTube] (https://www.youtube.com/watch?v=ddYLx6kqcMg)
+* Watch the full demo video in [YouTube](https://www.youtube.com/watch?v=ddYLx6kqcMg)
 
 ## Dataset
 Experiments were conducted on two real-world datasets: [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html) and [FFHQ](https://github.com/NVlabs/ffhq-dataset); and a toy dataset: [Mixture of Gaussians](/data/MixtureGaussian3By3.pk). 
