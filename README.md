@@ -2,9 +2,9 @@
 This repository contains the code of the following paper:
 > **Real or Not Real, that is the Question**<br>
 > Yuanbo Xiangli*, Yubin Deng*, Bo Dai*, Chen Change Loy, Dahua Lin<br>
-> https://openreview.net/forum?id=B1lPaCNtPB
+> [paper](https://openreview.net/forum?id=B1lPaCNtPB) & [talk](https://youtu.be/ddYLx6kqcMg)
 >
-> **Abstract:** *While generative adversarial networks (GAN) have been widely adopted in various topics, in this paper we generalize the standard GAN to a new perspective by treating realness as a random variable that can be estimated from multiple angles. In this generalized framework, referred to as RealnessGAN, the discriminator outputs a distribution as the measure of realness. While RealnessGAN shares similar theoretical guarantees with the standard GAN, it provides more insights on adversarial learning. More importantly, compared to multiple baselines, RealnessGAN provides stronger guidance for the generator, achieving improvements on both synthetic and real-world datasets. Moreover, it enables the basic DCGAN architecture to generate realistic images at 1024*1024 resolution when trained from scratch.*
+> **Abstract:** *While generative adversarial networks (GAN) have been widely adopted in various topics, in this paper we generalize the standard GAN to a new perspective by treating realness as a random variable that can be estimated from multiple angles. In this generalized framework, referred to as RealnessGAN, the discriminator outputs a distribution as the measure of realness. While RealnessGAN shares similar theoretical guarantees with the standard GAN, it provides more insights on adversarial learning. More importantly, compared to multiple baselines, RealnessGAN provides stronger guidance for the generator, achieving improvements on both synthetic and real-world datasets. Moreover, it enables the basic DCGAN architecture to generate realistic images at 1024*1024 resolution when trained from scratch.
 
 ## Dataset
 Experiments were conducted on two real-world datasets: [CelebA](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html) and [FFHQ](https://github.com/NVlabs/ffhq-dataset); and a toy dataset: [Mixture of Gaussians](/data/MixtureGaussian3By3.pk). 
@@ -28,7 +28,7 @@ Experiments were conducted on two real-world datasets: [CelebA](http://mmlab.ie.
 **FFHQ 1024x1024 (FID = 17.18)**
 
 ![](/images/FFHQ_snapshot.png)
-[Pretrained Model on FFHQ](https://drive.google.com/file/d/1NapKYf90NMQwk0TNTuMIb22RN3OeC0PU/view?usp=sharing)
+-> [Pretrained Model on FFHQ](https://drive.google.com/file/d/1NapKYf90NMQwk0TNTuMIb22RN3OeC0PU/view?usp=sharing)
 
 
 
