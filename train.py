@@ -157,26 +157,6 @@ else:
 print_now(G)
 print_now(D)
 
-# define anchors (you can experiment different shapes)
-
-# e.g. skewed normals
-# skew = skewnorm.rvs(-5, size=1000)
-# count, bins = np.histogram(skew, param.num_outcomes)
-# anchor0 = count / sum(count)
-
-# skew = skewnorm.rvs(5, size=1000)
-# count, bins = np.histogram(skew, param.num_outcomes)
-# anchor1 = count / sum(count)
-
-# e.g. normal and uniform
-gauss = np.random.normal(0, 0.1, 1000)
-count, bins = np.histogram(gauss, param.num_outcomes)
-anchor0 = count / sum(count)
-
-unif = np.random.uniform(-1, 1, 1000)
-count, bins = np.histogram(unif, param.num_outcomes)
-anchor1 = count / sum(count)
-
 for i in range(iter_offset, param.total_iters):
     print('***** start training iter %d *******'%i)
     D.train()
@@ -189,6 +169,26 @@ for i in range(iter_offset, param.total_iters):
             fake_test = G(z_test)
             vutils.save_image(fake_test.data, '%s/images/fake_samples_iter%05d.png' % (base_dir, i+1), normalize=True)
         G.train()
+
+    # define anchors (you can experiment different shapes)
+
+    # e.g. skewed normals
+    # skew = skewnorm.rvs(-5, size=1000)
+    # count, bins = np.histogram(skew, param.num_outcomes)
+    # anchor0 = count / sum(count)
+
+    # skew = skewnorm.rvs(5, size=1000)
+    # count, bins = np.histogram(skew, param.num_outcomes)
+    # anchor1 = count / sum(count)
+
+    # e.g. normal and uniform
+    gauss = np.random.normal(0, 0.1, 1000)
+    count, bins = np.histogram(gauss, param.num_outcomes)
+    anchor0 = count / sum(count)
+
+    unif = np.random.uniform(-1, 1, 1000)
+    count, bins = np.histogram(unif, param.num_outcomes)
+    anchor1 = count / sum(count)
 
     lossD = learnD_Realness(param, D, G, optimizerD, random_sample, Triplet_Loss, x, anchor1, anchor0)
     lossG = learnG_Realness(param, D, G, optimizerG, random_sample, Triplet_Loss, x, anchor1, anchor0)
