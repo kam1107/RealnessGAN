@@ -15,7 +15,7 @@ Experiments were conducted on two real-world datasets: [CelebA](http://mmlab.ie.
 
 ## Requirements
 * Python 3.6
-* Pytorch (Latest from source)
+* Pytorch 1.1.0
 
 ## Pretrain Models
 
