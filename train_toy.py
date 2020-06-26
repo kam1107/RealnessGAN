@@ -137,19 +137,19 @@ else:
 print_now(G)
 print_now(D)
 
-# define anchors
-gauss = np.random.normal(0, 0.1, 1000)
-count, bins = np.histogram(gauss, param.num_outcomes)
-anchor0 = count / sum(count)
-
-unif = np.random.uniform(-1, 1, 1000)
-count, bins = np.histogram(unif, param.num_outcomes)
-anchor1 = count / sum(count)
-
 for i in range(iter_offset, param.total_iters):
     print('***** start training iter %d *******'%i)
     D.train()
     G.train()
+
+    # define anchors
+    gauss = np.random.normal(0, 0.1, 1000)
+    count, bins = np.histogram(gauss, param.num_outcomes)
+    anchor0 = count / sum(count)
+
+    unif = np.random.uniform(-1, 1, 1000)
+    count, bins = np.histogram(unif, param.num_outcomes)
+    anchor1 = count / sum(count)
 
     lossD = learnD_Realness(param, D, G, optimizerD, random_sample, Triplet_Loss, x, anchor1, anchor0)
     lossG = learnG_Realness(param, D, G, optimizerG, random_sample, Triplet_Loss, x, anchor1, anchor0)
