@@ -19,6 +19,7 @@ Experiments were conducted on two real-world datasets: [CelebA](http://mmlab.ie.
 
 ## Pretrain Models
 
+* [CelebA](https://drive.google.com/file/d/1GObH02xlPQPnmAhCVIzMOK7LyqOpZn59/view?usp=sharing)
 * [FFHQ](https://drive.google.com/file/d/1NapKYf90NMQwk0TNTuMIb22RN3OeC0PU/view?usp=sharing)
 
 ## Training
