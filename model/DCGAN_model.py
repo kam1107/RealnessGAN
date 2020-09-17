@@ -28,14 +28,14 @@ class DCGAN_G(nn.Module):
         model.append(nn.ConvTranspose2d(self.param.z_size, self.param.G_h_size * mult, kernel_size=4, stride=1, padding=0, bias=False))
         model.append(nn.BatchNorm2d(self.param.G_h_size * mult))
 
-        model.append(nn.LeakyReLU(0.2, inplace=True))
+        model.append(nn.ReLU())
 
         # middel block
         while mult > 1:
             model.append(nn.ConvTranspose2d(self.param.G_h_size * mult, self.param.G_h_size * (mult//2), kernel_size=4, stride=2, padding=1, bias=False))
             model.append(nn.BatchNorm2d(self.param.G_h_size * (mult//2)))
 
-            model.append(nn.LeakyReLU(0.2, inplace=True))
+            model.append(nn.ReLU())
 
             mult = mult // 2
 
